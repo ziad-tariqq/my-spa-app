@@ -1,4 +1,5 @@
-const API = process.env.REACT_APP_API_BASE || ''; // '' = relative in dev (proxy)
+// Use relative paths in dev, full URL in production
+const API = process.env.REACT_APP_API_BASE || '';
 import { useEffect, useState } from 'react';
 import './App.css';
 
