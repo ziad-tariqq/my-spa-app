@@ -1,3 +1,4 @@
+const API = process.env.REACT_APP_API_BASE || ''; // '' = relative in dev (proxy)
 import { useEffect, useState } from 'react';
 import './App.css';
 
@@ -10,13 +11,13 @@ export default function App() {
     (async () => {
       try {
         // TEXT endpoint
-        const r1 = await fetch('/api/hello');
+        const r1 = await fetch(`${API}/api/hello`);
         if (!r1.ok) throw new Error(`hello ${r1.status} ${r1.statusText}`);
         const txt = await r1.text();
         setHello(txt);
 
         // JSON endpoint
-        const r2 = await fetch('/api/health');
+        const r2 = await fetch(`${API}/api/health`);
         if (!r2.ok) throw new Error(`health ${r2.status} ${r2.statusText}`);
         const json = await r2.json();
         setHealth(json);
