@@ -1,10 +1,9 @@
-// imports MUST be first
+// src/App.js
 import { useEffect, useState } from 'react';
 import './App.css';
 
-// then other top-level code
+// In production, this is set on Render. In local dev it can be '' (proxy).
 const API = process.env.REACT_APP_API_BASE || '';
-
 
 export default function App() {
   const [hello, setHello] = useState('loading...');
@@ -31,6 +30,8 @@ export default function App() {
     })();
   }, []);
 
+  const card = { maxWidth: 820, margin: '48px auto', padding: '16px' };
+
   return (
     <main style={{ maxWidth: 820, margin: '48px auto', padding: '0 16px' }}>
       <h1>My SPA App</h1>
@@ -48,18 +49,8 @@ export default function App() {
 
       <section style={card}>
         <h2>Backend /api/health</h2>
-        <pre style={{ margin: 0 }}>
-{health ? JSON.stringify(health, null, 2) : 'loading...'}
-        </pre>
+        <pre>{health ? JSON.stringify(health, null, 2) : '{}'}</pre>
       </section>
     </main>
   );
 }
-
-const card = {
-  border: '1px solid #e5e7eb',
-  borderRadius: 8,
-  padding: 20,
-  marginTop: 16,
-  background: '#fff',
-};
