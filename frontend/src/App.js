@@ -1,7 +1,10 @@
-// Use relative paths in dev, full URL in production
-const API = process.env.REACT_APP_API_BASE || '';
+// imports MUST be first
 import { useEffect, useState } from 'react';
 import './App.css';
+
+// then other top-level code
+const API = process.env.REACT_APP_API_BASE || '';
+
 
 export default function App() {
   const [hello, setHello] = useState('loading...');
